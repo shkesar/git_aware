@@ -5,7 +5,7 @@ RESET="$(tput sgr0)"
 
 if [ -d ".git" ]
 then
-        cd .git/
+        pushd .git
         branch=$( cat HEAD || true )
         j=0
         for i in $(echo $branch | tr "/" "\n")
@@ -17,7 +17,7 @@ then
 
                 fi;
         done;
-        cd ..
+        popd
 else
         export PS1='${NORMAL_YELLOW}$(whoami)${RESET}$'
 fi;
